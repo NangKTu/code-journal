@@ -14,13 +14,71 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Proza+Libre&display=swap');
+    </style>
   </head>
   <body>
     <header>
-      <div class="container"></div>
+      <div class="container">
+        <h1>Code Journal</h1>
+      </div>
     </header>
     <main class="container">
-      <div data-view="entry-form"></div>
+      <div data-view="entry-form">
+        <form id="entryForm">
+          <div class="row">
+            <div class="column-full h2">
+              <h2>New Entry</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-half">
+              <img
+                id="uploaded-img"
+                src="/images/placeholder-image-square.jpg"
+                alt="Uploaded Image" />
+            </div>
+            <div class="column-half">
+              <label class="margin" for="title">Title</label><br />
+              <input
+                class="margin"
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Title"
+                required /><br />
+
+              <label class="margin" for="photo-url">Photo URL</label><br />
+              <input
+                class="margin"
+                type="text"
+                id="photo-url"
+                name="photo-url"
+                placeholder="Enter Photo Link"
+                required />
+            </div>
+          </div>
+          <div class="row">
+            <div class="column-full">
+              <label for="notes">Notes</label><br />
+              <textarea
+                id="notes"
+                name="notes"
+                rows="5"
+                cols="50"
+                placeholder="Enter Your Notes"></textarea
+              ><br />
+
+              <input
+                type="submit"
+                id="submit"
+                value="SAVE"
+                style="float: right" />
+            </div>
+          </div>
+        </form>
+      </div>
       <div data-view="entries" class="hidden"></div>
     </main>
     <script src="js/data.js"></script>

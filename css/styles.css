@@ -1,0 +1,58 @@
+header {
+  background-color: #562b81;
+  color: #fff;
+  height: 3rem;
+  font-family: 'Proza Libre', sans-serif;
+}
+
+h1 {
+  padding-top: 5px;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f0f0f0;
+}
+
+#uploaded-img {
+  max-width: 100%;
+  height: auto;
+}
+
+#title,
+#photo-url,
+#notes {
+  width: 100%;
+}
+
+#title,
+#photo-url {
+  height: 3em;
+}
+
+@media (min-width: 565px) {
+  .column-full,
+  .column-half {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .column-half {
+    flex-basis: 50%;
+  }
+}
+
+.h2 {
+  font-size: x-large;
+}
+
+#submit {
+  background-color: #562b81;
+  color: #fff;
+  height: 2rem;
+}
+
+.margin {
+  margin: 20px 0;
+}
