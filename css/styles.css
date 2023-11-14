@@ -11,6 +11,7 @@ h1 {
 
 body {
   font-family: 'Open Sans', sans-serif;
+  background-color: #f0f0f0;
 }
 
 #uploaded-img {
@@ -24,6 +25,11 @@ body {
   width: 100%;
 }
 
+#title,
+#photo-url {
+  height: 3em;
+}
+
 @media (min-width: 565px) {
   .column-full,
   .column-half {
@@ -35,4 +41,18 @@ body {
   .column-half {
     flex-basis: 50%;
   }
+}
+
+.h2 {
+  font-size: x-large;
+}
+
+#submit {
+  background-color: #562b81;
+  color: #fff;
+  height: 2rem;
+}
+
+.margin {
+  margin: 20px 0;
 }

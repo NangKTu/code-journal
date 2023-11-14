@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/styles.css" />
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Proza+Libre&display=swap');
     </style>
   </head>
   <body>
@@ -26,9 +26,11 @@
     </header>
     <main class="container">
       <div data-view="entry-form">
-        <form>
+        <form id="entryForm">
           <div class="row">
-            <div class="column-full">New Entry</div>
+            <div class="column-full h2">
+              <h2>New Entry</h2>
+            </div>
           </div>
           <div class="row">
             <div class="column-half">
@@ -38,16 +40,18 @@
                 alt="Uploaded Image" />
             </div>
             <div class="column-half">
-              <label for="title">Title</label><br />
+              <label class="margin" for="title">Title</label><br />
               <input
+                class="margin"
                 type="text"
                 id="title"
                 name="title"
                 placeholder="Title"
                 required /><br />
 
-              <label for="photo-url">Photo URL</label><br />
+              <label class="margin" for="photo-url">Photo URL</label><br />
               <input
+                class="margin"
                 type="text"
                 id="photo-url"
                 name="photo-url"
@@ -63,10 +67,14 @@
                 name="notes"
                 rows="5"
                 cols="50"
-                required></textarea
+                placeholder="Enter Your Notes"></textarea
               ><br />
 
-              <input type="submit" value="SAVE" style="float: right" />
+              <input
+                type="submit"
+                id="submit"
+                value="SAVE"
+                style="float: right" />
             </div>
           </div>
         </form>
