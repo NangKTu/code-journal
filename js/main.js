@@ -24,3 +24,35 @@ document.querySelector('#entryForm').addEventListener('submit', function (e) {
   // to reset form
   document.querySelector('#entryForm').reset();
 });
+
+function renderEntry(entry) {
+  const $li = document.createElement('li');
+
+  const $img = document.createElement('img');
+  $img.setAttribute('class', 'savedImage');
+  $img.setAttribute('src', entry.$photoUrl);
+  $img.setAttribute('alt', entry.$title);
+  $li.appendChild($img);
+
+  const $div = document.createElement('div');
+
+  const $h2 = document.createElement('h2');
+  $h2.setAttribute('class', 'h2Test');
+  $h2.textContent = entry.$title;
+  $div.appendChild($h2);
+
+  const $p = document.createElement('p');
+  $p.setAttribute('class', 'qTest');
+  $p.textContent = entry.$notes;
+  $div.appendChild($p);
+
+  $li.appendChild($div);
+}
+
+document.addEventListener('DOMContentLoaded', function (e) {
+  const $entriesList = document.getElementById('entriesList');
+  for (let i = 0; i < data.entries.length; i++) {
+    const entryEle = renderEntry(data.entries[i]);
+    $entriesList.appendChild(entryEle);
+  }
+});
