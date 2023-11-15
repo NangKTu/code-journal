@@ -1,12 +1,14 @@
 header {
   background-color: #562b81;
   color: #fff;
-  height: 3rem;
+  height: 5em;
   font-family: 'Proza Libre', sans-serif;
 }
 
-h1 {
-  padding-top: 5px;
+.container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
 }
 
 body {
@@ -55,4 +57,60 @@ body {
 
 .margin {
   margin: 20px 0;
+}
+
+[data-view='entries'] {
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.savedImage {
+  max-width: 50%;
+  height: auto;
+  margin-right: 1rem;
+}
+
+.h2Test,
+.pTest {
+  flex: 1;
+}
+
+.entriesHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #f0f0f0;
+  margin-top: 2rem;
+}
+
+#new-entry-link {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #562b81;
+  color: #fff;
+  text-decoration: none;
+}
+
+#new-entry-link:visited {
+  color: #fff;
+}
+
+#entries-link {
+  color: #fff;
+  font-size: medium;
+  margin-right: 3rem;
+  text-decoration: none;
+}
+
+#entries-link:visited {
+  color: #fff;
 }

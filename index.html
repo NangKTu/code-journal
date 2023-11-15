@@ -19,13 +19,16 @@
     </style>
   </head>
   <body>
-    <header>
+    <header class="navbar">
       <div class="container">
-        <h1>Code Journal</h1>
+        <h1 class="navbar-title">Code Journal</h1>
+        <nav class="navbar-nav">
+          <a href="#entries" id="entries-link" class="navbar-link">Entries</a>
+        </nav>
       </div>
     </header>
     <main class="container">
-      <div data-view="entry-form">
+      <div data-view="entry-form" id="entry-form">
         <form id="entryForm">
           <div class="row">
             <div class="column-full h2">
@@ -79,7 +82,44 @@
           </div>
         </form>
       </div>
-      <div data-view="entries" class="hidden"></div>
+      <div data-view="entries" class="hidden" id="entries">
+        <div class="entriesHeader">
+          <h2>Entries</h2>
+          <a href="#entry-form" id="new-entry-link">NEW</a>
+        </div>
+        <ul id="entriesList">
+          <li>
+            <img
+              class="savedImage"
+              src="/images/placeholder-image-square.jpg"
+              alt="Image 1" />
+            <div>
+              <h2 class="h2Test">Title 1</h2>
+              <p class="pTest">Description 1</p>
+            </div>
+          </li>
+          <li>
+            <img
+              class="savedImage"
+              src="/images/placeholder-image-square.jpg"
+              alt="Image 1" />
+            <div>
+              <h2 class="h2Test">Title 1</h2>
+              <p class="pTest">Description 1</p>
+            </div>
+          </li>
+          <li>
+            <img
+              class="savedImage"
+              src="/images/placeholder-image-square.jpg"
+              alt="Image 1" />
+            <div>
+              <h2 class="h2Test">Title 1</h2>
+              <p class="pTest">Description 1</p>
+            </div>
+          </li>
+        </ul>
+      </div>
     </main>
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
