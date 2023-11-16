@@ -1,5 +1,5 @@
 /* global data */
-
+const $entriesList = document.getElementById('entriesList');
 const $entriesView = document.getElementById('entries');
 const $entryFormView = document.getElementById('entry-form');
 
@@ -11,31 +11,74 @@ document.querySelector('#photo-url').addEventListener('input', function (e) {
 document.querySelector('#entryForm').addEventListener('submit', function (e) {
   e.preventDefault();
 
-  const $title = document.querySelector('#title').value;
-  const $photoUrl = document.querySelector('#photo-url').value;
-  const $notes = document.querySelector('#notes').value;
-
-  const newEntry = {
-    entryId: data.nextEntryId,
-    $title,
-    $photoUrl,
-    $notes,
+  const journalEntry = {
+    $title: document.querySelector('#title').value,
+    $photoUrl: document.querySelector('#photo-url').value,
+    $notes: document.querySelector('#notes').value,
   };
 
-  data.nextEntryId++;
-  // add new entry to beginning of the data
-  data.entries.unshift(newEntry);
-  // Render a DOM tree for the newly submitted entry
-  renderEntry(newEntry);
-  // Show the "entries" view
-  viewSwap('entries');
-  // Conditionally use the toggleNoEntries function to remove the no entries text
-  toggleNoEntries(data.entries.length === 0);
-  // to reset preview image to placeholder image
+  if (data.editing === null) {
+    // Perform normal behavior for a new entry
+    // Add the entryId property and give it the value from data.nextEntryId
+    journalEntry.entryId = data.nextEntryId;
+    // Unshift your journal entry object into data.entries
+    data.entries.unshift(journalEntry);
+    // Increment the value of data.nextEntryId
+    data.nextEntryId++;
+    // Prepend the journal entry DOM tree to the ul
+    const $newLi = renderEntry(journalEntry);
+    $entriesList.prepend($newLi);
+  } else {
+    // Editing an existing entry
+    journalEntry.entryId = data.editing.entryId;
+    // STEP - Replace the original object in the data.entries array for the edited entry with the new journal entry object with the edited data.
+    for (let i = 0; i < data.entries.length; i++) {
+      // Check if the id of the current element you are looping through is equal to the id of the journal entry object
+      if (data.entries[i].entryId === journalEntry.entryId) {
+        // If a match is found, set data.entries[i] to the journal entry object
+        data.entries[i] = journalEntry;
+        // Break out of the loop since you found the match
+        break;
+      }
+    }
+
+    // STEP - Render a new DOM tree for the new object with the updated data, and replace the original li with the matching data-entry-id value with the new generated DOM tree.
+    // Query all the li items and save to variable $lis
+    const $lis = document.querySelectorAll('li');
+    // Declare variable updatedLi and set equal to renderEntry(journal entry object variable)
+    const updatedLi = renderEntry(journalEntry);
+    // Loop over the li's to find the li to replace
+    for (let i = 0; i < $lis.length; i++) {
+      // Check if the data-entry-id attribute value of the current li being looped through is equal to id property of data.editing
+      if (
+        parseInt($lis[i].getAttribute('data-entry-id')) === journalEntry.entryId
+      ) {
+        // If a match is found, create a variable that represents the li to replace
+        const liToReplace = $lis[i];
+        // Use the replaceWith method to replace the li to replace with the updated li
+        liToReplace.replaceWith(updatedLi);
+        // Break out of the loop since you found the match
+        break;
+      }
+    }
+
+    // STEP - Update the title on the form to New Entry.
+    document.querySelector('#editEntries').innerText = 'New Entry';
+
+    // STEP - Reset data.editing to null.
+    data.editing = null;
+  }
+
+  // After the if else statement resume with common behavior
+  // Set the img src attribute to the placeholder image
   document.querySelector('#uploaded-img').src =
     '/images/placeholder-image-square.jpg';
-  // to reset form
+  // Reset form
   document.querySelector('#entryForm').reset();
+  // Call view swap function with entries argument
+  viewSwap('entries');
+  // Call toggleNoEntries
+  toggleNoEntries(data.entries.length === 0);
 });
 
 function renderEntry(entry) {
@@ -65,8 +108,7 @@ function renderEntry(entry) {
   $div.appendChild($p);
 
   $li.appendChild($div);
-  const $entriesList = document.getElementById('entriesList');
-  $entriesList.prepend($li);
+  return $li;
 }
 
 document.addEventListener('DOMContentLoaded', function (e) {
