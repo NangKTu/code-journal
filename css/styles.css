@@ -83,6 +83,11 @@ li {
   flex: 1;
 }
 
+.h2Test {
+  display: flex;
+  justify-content: space-between;
+}
+
 .entriesHeader {
   display: flex;
   justify-content: space-between;
